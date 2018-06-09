@@ -1,11 +1,9 @@
 package main
 
-import (
-	"github.com/fidelicash/fc-api/server"
-	"github.com/fidelicash/fc-api/user"
-)
+import "github.com/fidelicash/fc-api/user"
 
 func main() {
-	user.Migrate()
-	server.Listen()
+	// user.Migrate()
+	// server.Listen()
+	user.FindAll()
 }

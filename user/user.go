@@ -148,6 +148,7 @@ func AddTransaction(transaction Transaction) {
 }
 
 func NewTransaction(transaction Transaction) {
+	transaction.Date = time.Now()
 	fmt.Println(transaction)
 	UpdateSaldo("5gjhTAFCR9arcfSJuwthEzYikJF2", 200)
 	Find("5gjhTAFCR9arcfSJuwthEzYikJF2")

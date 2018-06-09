@@ -3,6 +3,7 @@ package firebase
 import (
 	"log"
 
+	"github.com/fidelicash/fc-api/util"
 	"golang.org/x/net/context"
 
 	firebase "firebase.google.com/go"
@@ -12,13 +13,15 @@ import (
 )
 
 func Conn() (*db.Client, error) {
-
+	dURL := util.GetOSEnvironment("FDATABASE_URL", "https://fidelicash-c6245.firebaseio.com")
 	ctx := context.Background()
 	conf := &firebase.Config{
-		DatabaseURL: "https://fidelicash-c6245.firebaseio.com",
+		DatabaseURL: dURL,
 	}
+
 	// Fetch the service account key JSON file contents
-	opt := option.WithCredentialsFile("./serviceAccountKey.json")
+	opt := option.WithCredentialsFile("serviceAccountKey.json")
+	// opt := option.WithCredentialsFile("")
 	// Initialize the app with a service account, granting admin privileges
 	app, err := firebase.NewApp(ctx, conf, opt)
 	if err != nil {
@@ -31,16 +34,4 @@ func Conn() (*db.Client, error) {
 	}
 
 	return client, nil
-}
-
-func Get(client *db.Client, reference string) (interface{}, error) {
-	// As an admin, the app has access to read and write all data, regradless of Security Rules
-	// ref := client.NewRef("restricted_access/secret_document")
-	ctx := context.Background()
-	ref := client.NewRef(reference)
-	var data map[string]interface{}
-	if err := ref.Get(ctx, &data); err != nil {
-		log.Fatalln("Error reading from database:", err)
-	}
-	return data, nil
 }

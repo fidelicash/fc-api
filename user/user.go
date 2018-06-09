@@ -42,19 +42,20 @@ func FindAll() {
 	return
 }
 
-func Find(id string) {
+func Find(id string) (*User, error) {
 	client, err := firebase.Conn()
 	if err != nil {
-		return
+		return nil, err
 	}
 	ctx := context.Background()
 	ref := client.NewRef("/users/" + id)
 	var user User
 	if err := ref.Get(ctx, &user); err != nil {
 		log.Fatalln("Error reading from database:", err)
+		return nil, err
 	}
-	fmt.Println(user)
-	return
+	// fmt.Println(user)
+	return &user, nil
 }
 
 func Change() {
@@ -119,10 +120,10 @@ func Push() {
 	}
 }
 
-func UpdateSaldo(id string, saldo float32) {
+func UpdateSaldo(id string, saldo float32) error {
 	client, err := firebase.Conn()
 	if err != nil {
-		return
+		return err
 	}
 	ctx := context.Background()
 	ref := client.NewRef("/")
@@ -131,26 +132,53 @@ func UpdateSaldo(id string, saldo float32) {
 		id + "/saldo": saldo,
 	}); err != nil {
 		log.Fatalln("Error updating children:", err)
+		return err
 	}
+
+	return nil
 }
 
-func AddTransaction(transaction Transaction) {
+func AddTransaction(transaction Transaction) error {
 	client, err := firebase.Conn()
 	if err != nil {
-		return
+		return err
 	}
 	ctx := context.Background()
 	ref := client.NewRef("/history")
 	transactionRef := ref.Child("")
 	if _, err := transactionRef.Push(ctx, transaction); err != nil {
 		log.Fatalln("Error pushing child node:", err)
+		return err
 	}
+
+	return nil
 }
 
-func NewTransaction(transaction Transaction) {
+func NewTransaction(transaction Transaction) error {
 	transaction.Date = time.Now()
 	fmt.Println(transaction)
-	UpdateSaldo("5gjhTAFCR9arcfSJuwthEzYikJF2", 200)
-	Find("5gjhTAFCR9arcfSJuwthEzYikJF2")
+
+	uOrigin, err := Find(transaction.Origin)
+	if err != nil {
+		return err
+	}
+	newSaldoOrigin := uOrigin.Balance - transaction.Value
+	UpdateSaldo(transaction.Origin, newSaldoOrigin)
+	if err != nil {
+		return err
+	}
+
+	uTarget, err := Find(transaction.Target)
+	if err != nil {
+		return err
+	}
+	newSaldoTarget := uTarget.Balance + transaction.Value
+	UpdateSaldo(transaction.Target, newSaldoTarget)
+	if err != nil {
+		return err
+	}
+
 	AddTransaction(transaction)
+
+	return nil
 }

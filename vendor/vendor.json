@@ -3,6 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
+			"path": "firebase.google.com/go",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "Ne2HHjBVT8tegOp3l3ataHYmq9M=",
 			"path": "github.com/gorilla/mux",
 			"revision": "07ba1fd60e210dc5cc6f86ec25dc9ecc7c95c295",

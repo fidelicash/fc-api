@@ -13,8 +13,8 @@
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
 
-vendor/github.com/
-vendor/golang.org/
-vendor/cloud.google.com/
-vendor/firebase.google.com/
+#vendor/github.com/
+#vendor/golang.org/
+#vendor/cloud.google.com/
+#vendor/firebase.google.com/
 serviceAccountKey.json

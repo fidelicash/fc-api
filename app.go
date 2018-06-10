@@ -1,11 +1,11 @@
 package main
 
-import (
-	"github.com/fidelicash/fc-api/server"
-	"github.com/fidelicash/fc-api/user"
-)
+import "github.com/fidelicash/fc-api/server"
 
 func main() {
-	user.Migrate()
 	server.Listen()
+
+	// user.UpdateSaldo("5gjhTAFCR9arcfSJuwthEzYikJF2", 200)
+	// user.Find("5gjhTAFCR9arcfSJuwthEzYikJF2")
+	// user.AddTransaction()
 }

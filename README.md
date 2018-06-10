@@ -54,7 +54,6 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **[Julio Cesar](https://fidelicash.github.io)**
-* **[Katarina Massako Inoue](https://github.com/katarinamai)**
 
 See also the list of [contributors](https://github.com/fidelicash/fc-api/contributors) who participated in this project.
 

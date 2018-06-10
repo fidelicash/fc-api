@@ -20,8 +20,8 @@ func Conn() (*db.Client, error) {
 	}
 
 	// Fetch the service account key JSON file contents
-	opt := option.WithCredentialsFile("serviceAccountKey.json")
-	// opt := option.WithCredentialsFile("")
+	// opt := option.WithCredentialsFile("serviceAccountKey.json")
+	opt := option.WithCredentialsFile("")
 	// Initialize the app with a service account, granting admin privileges
 	app, err := firebase.NewApp(ctx, conf, opt)
 	if err != nil {

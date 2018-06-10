@@ -23,6 +23,28 @@
 			"revisionTime": "2018-06-08T21:53:05Z"
 		},
 		{
+			"checksumSHA1": "LTLedlPYyqBYylSIxlepr5vigDc=",
+			"path": "cloud.google.com/go/internal/btree",
+			"revision": "da2b80561ef3bd78664aa962c02b8b18f3fe98b9",
+			"revisionTime": "2018-06-08T21:53:05Z"
+		},
+		{
+			"checksumSHA1": "0YLwL10LdXwVsF/eNYZ0w6pF300=",
+			"path": "cloud.google.com/go/internal/fields",
+			"revision": "da2b80561ef3bd78664aa962c02b8b18f3fe98b9",
+			"revisionTime": "2018-06-08T21:53:05Z"
+		},
+		{
+			"checksumSHA1": "kdo7zEs2c2QIv/ynevCjo8VtmzU=",
+			"path": "cloud.google.com/go/internal/version",
+			"revision": "da2b80561ef3bd78664aa962c02b8b18f3fe98b9",
+			"revisionTime": "2018-06-08T21:53:05Z"
+		},
+		{
+			"path": "cloud.google.com/go/storage",
+			"revision": ""
+		},
+		{
 			"path": "firebase.google.com/go",
 			"revision": ""
 		},

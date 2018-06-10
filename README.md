@@ -1,12 +1,11 @@
 # fc-api
-CRUD Golang
+API Golang
 
 
 ## Prerequisites
 
 * [Golang](https://github.com/golang/go) 
 * [GoVendor](https://github.com/kardianos/govendor)
-* [Sqlite](https://www.sqlite.org/index.html) or [PostgreSQL](https://www.postgresql.org/)
 * [Gitflow](https://github.com/nvie/gitflow) For Contributing
 
 
@@ -33,14 +32,6 @@ govendor sync
 
 ```
 go run app.go
-```
-
-### or
-
-### Run project( Change Env vars) Ex.:
-
-```
-DB=postgres DATABASE_URL=postgres://user:password@host:5432/database go run app.go
 ```
 
 ## Contributing

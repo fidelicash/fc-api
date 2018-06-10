@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/fidelicash/fc-api/firebase"
+	fbase "github.com/fidelicash/fc-api/fbase"
 )
 
 // User is a Human
@@ -27,7 +27,7 @@ type Transaction struct {
 }
 
 func FindAll() {
-	client, err := firebase.Conn()
+	client, err := fbase.Conn()
 	if err != nil {
 		return
 	}
@@ -43,7 +43,7 @@ func FindAll() {
 }
 
 func Find(id string) (*User, error) {
-	client, err := firebase.Conn()
+	client, err := fbase.Conn()
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func Change() {
 }
 
 func Add() {
-	client, err := firebase.Conn()
+	client, err := fbase.Conn()
 	if err != nil {
 		return
 	}
@@ -92,7 +92,7 @@ func Add() {
 }
 
 func Push() {
-	client, err := firebase.Conn()
+	client, err := fbase.Conn()
 	if err != nil {
 		return
 	}
@@ -121,7 +121,7 @@ func Push() {
 }
 
 func UpdateSaldo(id string, saldo float32) error {
-	client, err := firebase.Conn()
+	client, err := fbase.Conn()
 	if err != nil {
 		return err
 	}
@@ -139,7 +139,7 @@ func UpdateSaldo(id string, saldo float32) error {
 }
 
 func AddTransaction(transaction Transaction) error {
-	client, err := firebase.Conn()
+	client, err := fbase.Conn()
 	if err != nil {
 		return err
 	}

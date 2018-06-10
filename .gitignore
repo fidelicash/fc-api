@@ -17,4 +17,4 @@
 #vendor/golang.org/
 #vendor/cloud.google.com/
 #vendor/firebase.google.com/
-serviceAccountKey.json
+#serviceAccountKey.json

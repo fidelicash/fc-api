@@ -13,6 +13,12 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "CgYouHISABypWPadYPFgAzuv8MU=",
+			"path": "cloud.google.com/go/internal/atomiccache",
+			"revision": "da2b80561ef3bd78664aa962c02b8b18f3fe98b9",
+			"revisionTime": "2018-06-08T21:53:05Z"
+		},
+		{
 			"path": "firebase.google.com/go",
 			"revision": ""
 		},

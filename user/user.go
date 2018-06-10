@@ -3,7 +3,10 @@ package user
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"log"
+	"net/http"
+	"strconv"
 	"time"
 
 	fbase "github.com/fidelicash/fc-api/fbase"
@@ -154,6 +157,21 @@ func AddTransaction(transaction Transaction) error {
 	return nil
 }
 
+func CordaTransaction(transaction Transaction) {
+
+	resp, err := http.Get(`http://fsm01an4v-node0.brazilsouth.cloudapp.azure.com:10004/api/transfer/transfer?` +
+		`from=` + transaction.Origin +
+		`&to=` + transaction.Target +
+		`&value=` + strconv.Itoa(int(transaction.Value)))
+	if err != nil {
+		return
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+
+	fmt.Println(string(body))
+}
+
 func NewTransaction(transaction Transaction) error {
 	transaction.Date = time.Now()
 	fmt.Println(transaction)
@@ -182,6 +200,8 @@ func NewTransaction(transaction Transaction) error {
 	if err != nil {
 		return err
 	}
+
+	CordaTransaction(transaction)
 
 	return nil
 }

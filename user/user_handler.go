@@ -24,9 +24,25 @@ func AddTrsctn(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	NewTransaction(trsctn)
+	msg = util.Message{
+		Content: "Internal Server Error",
+		Status:  "ERROR",
+		Body:    nil,
+	}
 
-	util.RespondWithJSON(w, http.StatusOK, "")
+	err := NewTransaction(trsctn)
+	if err != nil {
+		util.RespondWithJSON(w, http.StatusInternalServerError, msg)
+		return
+	}
+
+	msg = util.Message{
+		Content: "Transaction OK",
+		Status:  "StatusOK",
+		Body:    nil,
+	}
+
+	util.RespondWithJSON(w, http.StatusOK, msg)
 }
 
 // GetAll Users

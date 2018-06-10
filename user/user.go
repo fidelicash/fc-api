@@ -178,7 +178,10 @@ func NewTransaction(transaction Transaction) error {
 		return err
 	}
 
-	AddTransaction(transaction)
+	err = AddTransaction(transaction)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

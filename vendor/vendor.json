@@ -3,6 +3,16 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "LG0KwdgBFYinC6KrOKKNAnKgrl0=",
+			"path": "cloud.google.com/go",
+			"revision": "da2b80561ef3bd78664aa962c02b8b18f3fe98b9",
+			"revisionTime": "2018-06-08T21:53:05Z"
+		},
+		{
+			"path": "cloud.google.com/go/firestore/apiv1beta1",
+			"revision": ""
+		},
+		{
 			"path": "firebase.google.com/go",
 			"revision": ""
 		},
